@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zahra fitriah💖</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffe0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+    .letter, .message, .gallery {
+      display: none;
+    }
+    .show { display: block; animation: fade 1s ease-in-out; }
+    .btn {
+      background: #ff69b4;
+      border: none;
+      padding: 1rem 2rem;
+      color: white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      display: none; /* Sembunyikan foto secara default */
+      text-align: center;
+    }
+    .gallery-item img {
+      max-width: 300px; /* Atur lebar maksimum gambar */
+      width: 100%; /* Gambar akan menyesuaikan dengan lebar kontainer */
+      height: auto; /* Jaga proporsi gambar */
+      border-radius: 10px; /* Tambahkan sudut melengkung */
+    }
+    .caption {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .particle {
+      position: absolute;
+      font-size: 20px;
+      animation: fall 4s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10%); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <div class="letter show" id="step1">
+      <img src="https://cdn-icons-png.flaticon.com/512/9503/9503414.png" alt="Ikon Surat" onclick="showStep(2)" />
+      <p>Klik logo di atas, Surat ini dibikin khusus buat Zahra fitriah 💌</p>
+    </div>
+
+    <div class="message" id="step2">
+      <h2>Selamat Ulang Tahun, Zahra 🎉</h2>
+      <p>Sayangku,
+Selamat ulang tahun ya, cinta. Di hari spesial ini, aku cuma mau kamu tahu satu hal: kehadiran kamu dalam hidup aku adalah salah satu hal terindah yang pernah aku miliki.
+
+Terima kasih karena selalu ada, karena senyum kamu bisa bikin hari aku jadi lebih hangat, dan peluk kamu selalu jadi tempat paling aman buat aku pulang.
+
+Aku tahu hidup nggak selalu mudah, tapi selama kita sama-sama, aku yakin kita bisa lewatin semuanya. Aku ingin terus jadi orang pertama yang nyemangatin kamu waktu kamu lelah, dan orang terakhir yang nemenin kamu sampai akhir.
+
+Semoga hari ini membawa kebahagiaan yang kamu pantas dapatkan, dan semoga semua impian kamu bisa pelan-pelan jadi nyata.
+Aku sayang kamu lebih dari kata-kata yang bisa jelasin.
+
+Selamat ulang tahun, cintaku.
+Teruslah jadi kamu yang luar biasa.
+Aku beruntung banget bisa milikin kamu.</p>
+      <button class="btn" onclick="showStep(3); startParticles()">Lihat Kenangan 📸</button>
+    </div>
+
+    <div class="gallery" id="step3">
+      <h2>Momen-Momen Kita 💕</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" id="item1">
+          <img src="baru deket.jpg" alt="Foto 1" />
+          <p class="caption" id="caption1">kamu masih inget ga sama foto ini, foto ini tuh dimana kita masih awal deket </p>
+        </div>
+        <div class="gallery-item" id="item2">
+          <img src="kenangan 1.jpg" alt="Foto 2" />
+          <p class="caption" id="caption2">hubungan kita tuh sama kaya foto ini ya, aneh random tapi bikin bahagia</p>
+        </div>
+        <div class="gallery-item" id="item3">
+          <img src="kenangan 2.jpg" alt="Foto 3" />
+          <p class="caption" id="caption3">aku selalu suka tiap pergi main sama kamu kemana pun itu karena hal yang bikin seru tuh bukan karena tempatnya tetapi sama siapanya</p>
+        </div>
+        <div class="gallery-item" id="item4">
+          <img src="kenangan 3.jpg" alt="Foto 4" />
+          <p class="caption" id="caption4">disini pose aku emang sok cool tapi coba kamu liat lagi deh di foto itu aku juga tersenyum karena aku senang setiap berada disamping kamu</p>
+        </div>
+        <div class="gallery-item" id="item5">
+          <img src="imam ultah.jpg" alt="Foto 5" />
+          <p class="caption" id="caption4">di foto ini kamu kasih aku hadiah, dan sekarang aku bikin ini juga adalah salah satu bagian dari hadiah aku</p>
+        </div>
+      </div>
+      <button class="btn" onclick="showPhoto(1)">Tampilkan Foto 1</button>
+      <button class="btn" onclick="showPhoto(2)">Tampilkan Foto 2</button>
+      <button class="btn" onclick="showPhoto(3)">Tampilkan Foto 3</button>
+      <button class="btn" onclick="showPhoto(4)">Tampilkan Foto 4</button>
+      <button class="btn" onclick="showPhoto(5)">Tampilkan Foto 5</button>
+    </div>
+  </div>
+
+  <script>
+    function showStep(step) {
+      document.querySelectorAll('.letter, .message, .gallery').forEach(el => el.classList.remove('show'));
+      document.getElementById('step' + step).classList.add('show');
+    }
+
+    function startParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const emojis = ['💖','✨','🌟','💕','💫'];
+      const interval = setInterval(() => {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.fontSize = (Math.random() * 10 + 16) + 'px';
+        particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        particlesContainer.appendChild(particle);
+        setTimeout(() => particle.remove(), 4000);
+      }, 150);
+      setTimeout(() => clearInterval(interval), 5000);
+    }
+
+    function showPhoto(index) {
+      // Sembunyikan semua item galeri
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.style.display = 'none';
+      });
+      // Tampilkan item galeri yang dipilih
+      const selectedItem = document.getElementById('item' + index);
+      selectedItem.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
